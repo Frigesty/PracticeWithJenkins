@@ -29,91 +29,65 @@ public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ModalComponent modalComponent = new ModalComponent();
 
-    public RegistrationPage openPage() {
+    public void openPage() {
         open("/automation-practice-form");
-
-        return this;
     }
 
-    public RegistrationPage removeBanners() {
+    public void removeBanners() {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
-
-        return this;
     }
 
-    public RegistrationPage setFirstName(String value) {
+    public void setFirstName(String value) {
         $(firstNameInput).setValue(value);
-
-        return this;
     }
 
-    public RegistrationPage setLastName(String value) {
+    public void setLastName(String value) {
         $(lastNameInput).setValue(value);
-
-        return this;
     }
 
-    public RegistrationPage setEmail(String value) {
+    public void setEmail(String value) {
         userEmailInput.setValue(value);
-
-        return this;
     }
 
-    public RegistrationPage chooseGender(String value) {
+    public void chooseGender(String value) {
         genderWrapper.$(byText(value)).click();
-
-        return this;
     }
 
-    public RegistrationPage setMobileNumber(String value) {
+    public void setMobileNumber(String value) {
         mobileNumberInput.setValue(value);
-
-        return this;
     }
 
-    public RegistrationPage setBirthDate(int day, String month, int year) {
+    public void setBirthDate(int day, String month, int year) {
         birthDateInput.click();
         calendarComponent.setDate(day, month, year);
-
-        return this;
     }
 
-    public RegistrationPage setAndChooseSubject(String value) {
+    public void setAndChooseSubject(String value) {
         subjectsInput.setValue(value).pressEnter();
-
-        return this;
     }
 
-    public RegistrationPage chooseHobbies(String value) {
+    public void chooseHobbies(String value) {
         hobbiesWrapper.$(byText(value)).click();
-
-        return this;
     }
 
-    public RegistrationPage uploadPicture(String value) {
+    public void uploadPicture(String value) {
         uploadPicture.uploadFromClasspath(value);
-
-        return this;
     }
 
-    public RegistrationPage setAddress(String value) {
+    public void setAddress(String value) {
         addressInput.setValue(value);
-
-        return this;
     }
 
-    public RegistrationPage chooseStateAndCity(String state, String city) {
-        stateInput.click();
-        stateCityWrapper.$(byText(state)).click();
-        cityInput.click();
-        stateCityWrapper.$(byText(city)).click();
-
-        return this;
+    public void chooseStateAndCity(String state, String city) {
+        stateInput.scrollTo().click();
+        stateCityWrapper.$(byText(state)).scrollTo().click();
+        cityInput.scrollTo().click();
+        stateCityWrapper.$(byText(city)).scrollTo().click();
     }
 
     public void clickSubmit() {
-        submitButton.click();
+        submitButton.scrollTo().click();
     }
 
     public RegistrationPage verifyRegistrationResultsModalAppears() {
@@ -131,28 +105,22 @@ public class RegistrationPage {
     public RegistrationPage firstNameFieldInvalidationCheck() {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
 
-
         return this;
     }
 
-    public RegistrationPage lasNameFieldInvalidationCheck() {
+    public void lastNameFieldInvalidationCheck() {
         lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-
-        return this;
     }
 
-    public RegistrationPage userEmailFieldInvalidationCheck() {
+    public void userEmailFieldInvalidationCheck() {
         userEmailInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-
-        return this;
     }
 
-    public RegistrationPage genderFieldInvalidationCheck() {
+    public void genderFieldInvalidationCheck() {
         ElementsCollection radioLabels = $$(".custom-radio label");
         for (SelenideElement label : radioLabels) {
             label.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         }
-        return this;
     }
 
     public void mobileNumberFieldInvalidationCheck() {
