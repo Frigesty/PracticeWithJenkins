@@ -18,7 +18,7 @@ public class PracticeFormTests extends TestBase {
     void fullFillFormTest() {
         step("Открываем страницу", () -> {
             registrationPage.openPage()
-                    .removeBanners();
+                            .removeBanners();
         });
 
         step("Вводим имя", () -> {
