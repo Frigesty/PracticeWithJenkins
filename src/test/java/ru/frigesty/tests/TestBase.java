@@ -25,7 +25,6 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
-        capabilities.setCapability("browserName", "chrome");
     }
 
     @BeforeEach
