@@ -9,9 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.frigesty.halpers.Attach;
-
 import java.util.Map;
-
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
